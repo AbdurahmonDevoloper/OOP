@@ -1,18 +1,49 @@
-# Mashinalar Poygasi (Konsol O'yini)
+# Obyektga Yoʻnaltirilgan Dasturlash (OOP) — Polimorfizm Vazifalari
 
-Bu `while` tsiklidan foydalangan holda ikkita mashina o'rtasidagi ko'cha poygasini simulyatsiya qiluvchi oddiy C# konsol dasturidir.
+Ushbu loyiha C# dasturlash tilida OOPning eng muhim ustunlaridan biri boʻlgan **Polimorfizm (Polymorphism)** mavzusiga bagʻishlangan. Loyiha doirasida 5 ta mustaqil tizim yaratilgan boʻlib, ularning har biri alohida `.cs` fayllarda arxitektura qilingan.
 
-## Loyiha Haqida
-Ushbu loyiha C# tilidagi shartli tsikl (`while`) mexanizmini o'rganish uchun yaratildi. Dastur ma'lum bir shart bajarilgunga qadar (ya'ni, mashinalardan biri marraga yetib bormaguncha) tsikl qanday to'xtovsiz ishlashini ko'rsatib beradi.
+---
 
-### Poyga Qoidalari va Mantiqi:
-- **Malibu:** Yo'qilg'isi ko'p (80L), lekin yili eskiroq (2016). U har sekundda **15 metr** masofa bosib o'tadi.
-- **Gentra:** Yo'qilg'isi kamroq (40L), lekin yili YANGI (2026). Yangi motor hisobiga u tezroq, ya'ni har sekundda **25 metr** yuradi va poygada g'olib bo'ladi.
+##  Qoʻyilgan Talablar
+1. Barcha ota (Parent) klasslarda `virtual` metodlardan foydalanilgan.
+2. Barcha voris (Child) klasslarda `override` kalit soʻzi orqali metodlar qayta yozilgan.
+3. Obyektlar **Parent reference** orqali yaratilgan (masalan: `Shape s1 = new Circle();`).
+4. Kodlarning barcha qismlari oʻzbek tilida konsolga maʼlumot chiqaradi.
 
-## Dasturni Ishga Tushirish
-Kompyuteringizda .NET SDK o'rnatilganligiga ishonch hosil qiling.
+---
 
-1. Terminalni loyiha papkasida oching.
-2. Quyidagi buyruqni ishga tushiring:
-   ```bash
-   dotnet run
+##  Loyiha Strukturasi (Vazifalar)
+
+### 1. Shape System (Shakllar Tizimi)
+* **Parent:** `Shape` (`Draw()` metodi)
+* **Child klasslar:** `Circle`, `Rectangle`, `Triangle`
+* **Vazifasi:** Geometrik shakllarni polimorfizm orqali konsolga chizish (matn koʻrinishida).
+
+### 2. Notification System (Xabarnoma Tizimi)
+* **Parent:** `Notification` (`Send()` metodi)
+* **Child klasslar:** `EmailNotification`, `SmsNotification`, `TelegramNotification`
+* **Vazifasi:** Har bir xabarnoma turi uchun oʻziga mos platforma xabarini foydalanuvchiga yetkazish.
+
+### 3. Payment System (Toʻlov Tizimi)
+* **Parent:** `Payment` (`Pay()` metodi)
+* **Child klasslar:** `ClickPayment`, `PaymePayment`, `CashPayment`
+* **Vazifasi:** Oʻzbekistondagi ommabop toʻlov tizimlari integratsiyasini polimorfik modelda simulyatsiya qilish.
+
+### 4. Game Characters (Oʻyin Qahramonlari)
+* **Parent:** `Character` (`Name` propertysi va `Attack()` metodi)
+* **Child klasslar:** `Warrior`, `Archer`, `Mage`
+* **Vazifasi:** Konstruktor orqali qahramon nomini ota klassga uzatish va har bir personajning oʻziga xos qurol bilan hujum qilishini taʼminlash.
+
+### 5. Smart Devices (Aqlli Qurilmalar)
+* **Parent:** `Device` (`TurnOn()` metodi)
+* **Child klasslar:** `Phone`, `Laptop`, `TV`
+* **Vazifasi:** Turli elektron qurilmalarning ishga tushish jarayonini boshqarish.
+
+---
+
+##  Loyihani Ishga Tushirish
+
+Loyihani kompyuteringizda ishga tushirish uchun quyidagi buyruqni terminalga yozing:
+
+```bash
+dotnet run
